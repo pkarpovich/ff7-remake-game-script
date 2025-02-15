@@ -82,29 +82,28 @@ export function ScriptReader() {
   }, [chapters, getCurrentIndices, selectedChapter, selectedSubchapter]);
 
   return (
-    <div className="relative h-screen bg-background">
-      <div
+    <div className="flex h-screen overflow-hidden bg-background">
+      <aside
         className={clsx(
-          "fixed top-0 left-0 h-full z-30 bg-background hidden lg:block border-r transition-all duration-300",
-          isSidebarOpen ? "w-80" : "w-0 overflow-hidden",
+          "fixed top-0 left-0 h-full z-30 bg-background hidden lg:block border-r transition-transform duration-300 w-80",
+          !isSidebarOpen && "-translate-x-full",
         )}
       >
-        <NavigationContent
-          chapters={chapters}
-          selectedChapter={selectedChapter}
-          selectedSubchapter={selectedSubchapter}
-          openChapters={openChapters}
-          onToggleChapter={toggleChapter}
-          onSetSelectedChapter={setSelectedChapter}
-          onSetSelectedSubchapter={setSelectedSubchapter}
-        />
-      </div>
+        <div className="pt-20">
+          <NavigationContent
+            chapters={chapters}
+            selectedChapter={selectedChapter}
+            selectedSubchapter={selectedSubchapter}
+            openChapters={openChapters}
+            onToggleChapter={toggleChapter}
+            onSetSelectedChapter={setSelectedChapter}
+            onSetSelectedSubchapter={setSelectedSubchapter}
+          />
+        </div>
+      </aside>
 
-      <div
-        className={clsx(
-          "h-full flex flex-col",
-          isSidebarOpen ? "lg:ml-80" : "",
-        )}
+      <main
+        className={clsx("flex-1 flex flex-col transition-all duration-300")}
       >
         <Header
           selectedChapter={selectedChapter}
@@ -134,7 +133,7 @@ export function ScriptReader() {
           onNextButtonClick={navigateToNextSubchapter}
           onPrevButtonClick={navigateToPrevSubchapter}
         />
-      </div>
+      </main>
     </div>
   );
 }
