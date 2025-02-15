@@ -82,10 +82,10 @@ export function ScriptReader() {
   }, [chapters, getCurrentIndices, selectedChapter, selectedSubchapter]);
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="relative h-screen bg-background">
       <div
         className={clsx(
-          "hidden lg:block border-r transition-all duration-300",
+          "fixed top-0 left-0 h-full z-30 bg-background hidden lg:block border-r transition-all duration-300",
           isSidebarOpen ? "w-80" : "w-0 overflow-hidden",
         )}
       >
@@ -100,12 +100,17 @@ export function ScriptReader() {
         />
       </div>
 
-      <div className="flex-1 overflow-hidden flex flex-col">
+      <div
+        className={clsx(
+          "h-full flex flex-col",
+          isSidebarOpen ? "lg:ml-80" : "",
+        )}
+      >
         <Header
           selectedChapter={selectedChapter}
           selectedSubchapter={selectedSubchapter}
-          onClick={() => setIsSidebarOpen((prev) => !prev)}
           sidebarOpen={isSidebarOpen}
+          onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
         />
 
         <ReaderContent
