@@ -1,4 +1,4 @@
-import ScriptViewer from "./ScriptViewer.tsx";
+import ScriptViewer from "./components/ScriptReader.tsx";
 
 function App() {
   return <ScriptViewer />;
