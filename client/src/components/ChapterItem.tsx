@@ -40,7 +40,7 @@ export function ChapterItem({
         )}
         onClick={() => onChapterToggle(chapter.number)}
       >
-        <span>
+        <span className="text-md leading-none">
           Chapter {chapter.number}: {chapter.title}
         </span>
         <Icon className="h-4 w-4" />
@@ -60,7 +60,9 @@ export function ChapterItem({
                 className="w-full justify-start h-auto py-2 text-left text-sm"
                 onClick={handleSubchapterClick(chapter, subchapter)}
               >
-                <span className="text-pretty">{subchapter.title}</span>
+                <span className="text-pretty text-md leading-none">
+                  {subchapter.title}
+                </span>
               </Button>
             );
           })}

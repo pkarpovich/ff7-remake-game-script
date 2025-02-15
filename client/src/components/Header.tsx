@@ -3,6 +3,7 @@ import { PanelLeft, PanelLeftClose, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Chapter, Nullable, Subchapter } from "@/types";
 import { useTheme } from "@/providers/theme";
+import { FontSizeControls } from "@/providers/fontSize.tsx";
 
 type Props = {
   selectedChapter: Nullable<Chapter>;
@@ -51,6 +52,7 @@ export function Header({
           </div>
         </div>
         <div className="flex items-center gap-2">
+          <FontSizeControls />
           <Button
             variant="ghost"
             size="icon"
