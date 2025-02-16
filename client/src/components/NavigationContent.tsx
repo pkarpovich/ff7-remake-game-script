@@ -10,8 +10,7 @@ type Props = {
   selectedSubchapter: Nullable<Subchapter>;
   openChapters: Record<string, boolean>;
   onToggleChapter: (chapterId: string) => void;
-  onSetSelectedChapter: (chapter: Nullable<Chapter>) => void;
-  onSetSelectedSubchapter: (subchapter: Nullable<Subchapter>) => void;
+  onSetSelectedSubchapter: (chapter: Chapter, subchapter: Subchapter) => void;
 };
 
 export function NavigationContent({
@@ -20,15 +19,13 @@ export function NavigationContent({
   selectedSubchapter,
   openChapters,
   onToggleChapter,
-  onSetSelectedChapter,
   onSetSelectedSubchapter,
 }: Props) {
   const handleSubchapterSelect = useCallback(
     (chapter: Chapter, subchapter: Subchapter) => {
-      onSetSelectedChapter(chapter);
-      onSetSelectedSubchapter(subchapter);
+      onSetSelectedSubchapter(chapter, subchapter);
     },
-    [onSetSelectedChapter, onSetSelectedSubchapter],
+    [onSetSelectedSubchapter],
   );
 
   return (

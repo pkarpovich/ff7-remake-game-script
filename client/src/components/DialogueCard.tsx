@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { CharacterId, Dialogue } from "@/types";
+import { Dialogue } from "@/types";
 import {
   Avatar,
   AvatarFallback,
