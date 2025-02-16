@@ -33,6 +33,7 @@ export function Header({
   const handleToggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
   }, [setTheme, theme]);
+  console.log(theme);
 
   return (
     <header className="sticky top-0 z-50 h-24 md:h16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

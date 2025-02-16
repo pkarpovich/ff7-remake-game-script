@@ -16,7 +16,7 @@ export default defineConfig({
         short_name: "FF7 Script",
         description:
           "Interactive script reader for Final Fantasy VII Remake with chapter navigation",
-        theme_color: "#0a0a0a",
+        theme_color: "#020817",
         background_color: "#ffffff",
         display: "standalone",
         start_url: "/",

@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialogue } from "@/types";
+import { CharacterId, Dialogue } from "@/types";
 import {
   Avatar,
   AvatarFallback,
@@ -20,6 +20,8 @@ const getInitials = (name: string) =>
 
 const normalize = (str: string) =>
   str.toLowerCase().replace(/\s/g, "").replaceAll("_", " ");
+
+const UNKNOWN_CHARACTER: CharacterId = "UNKNOWN";
 
 type Props = {
   dialogue: Dialogue;
@@ -43,14 +45,16 @@ export function DialogueCard({ dialogue }: Props) {
                 className="text-sm bg-secondary text-secondary-foreground"
                 style={{ fontSize: `${fontSize}rem` }}
               >
-                {getInitials(dialogue.character.name)}
+                {dialogue.character.id !== UNKNOWN_CHARACTER
+                  ? getInitials(dialogue.character.name)
+                  : "??"}
               </AvatarFallback>
             </Avatar>
           </div>
         </div>
         <div className="flex-1 min-w-0">
           <div className="font-medium text-primary/90 mb-1 leading-none capitalize">
-            {dialogue.character.id !== "UNKNOWN"
+            {dialogue.character.id !== UNKNOWN_CHARACTER
               ? normalize(dialogue.character.id)
               : dialogue.character.name}
           </div>
