@@ -35,6 +35,7 @@ CHARACTER_MAPPING = {
     "Cloud": CharacterId.CLOUD,
     "К": CharacterId.CLOUD,
     "к": CharacterId.CLOUD,
+    "С": CharacterId.CLOUD,
     # Tifa
     "T": CharacterId.TIFA,
     "Т": CharacterId.TIFA,
@@ -70,7 +71,6 @@ CHARACTER_MAPPING = {
     "Seph": CharacterId.SEPHIROTH,
     "S": CharacterId.SEPHIROTH,
     "Se": CharacterId.SEPHIROTH,
-    "С": CharacterId.SEPHIROTH,
     "Зак": CharacterId.ZACK,
     "Be": CharacterId.BETTY,
     "Бек": CharacterId.BECK,
