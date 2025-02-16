@@ -29,7 +29,7 @@ export function NavigationContent({
   );
 
   return (
-    <ScrollArea className="h-screen">
+    <ScrollArea className="h-full">
       <div className="space-y-4 p-4">
         {chapters.map((chapter) => {
           const isOpen = openChapters[chapter.id];

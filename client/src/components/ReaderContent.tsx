@@ -13,7 +13,7 @@ export function ReaderContent({ selectedSubchapter, element }: Props) {
 
   return (
     <ScrollArea className="flex-1 p-4" style={{ fontSize: `${fontSize}rem` }}>
-      <div className="max-w-4xl mx-auto w-full space-y-4 pl-16 lg:pl-0">
+      <div className="max-w-4xl mx-auto w-full space-y-4">
         {selectedSubchapter?.dialogues.map(element)}
       </div>
     </ScrollArea>

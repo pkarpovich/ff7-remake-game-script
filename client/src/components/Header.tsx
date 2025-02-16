@@ -35,9 +35,9 @@ export function Header({
   }, [setTheme, theme]);
 
   return (
-    <header className="sticky top-0 z-50 h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-full max-w-4xl items-center gap-4 px-4">
-        <div className="flex h-full items-center">
+    <header className="sticky top-0 z-50 h-24 md:h16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="mx-auto flex flex-col md:flex-row h-full max-w-4xl items-center gap-4 px-4">
+        <div className="hidden md:flex h-full items-center">
           <img
             src="/logo.svg"
             alt="FF7 Remake Script Reader"

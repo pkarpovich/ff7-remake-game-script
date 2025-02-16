@@ -39,14 +39,27 @@ export function ScriptReader() {
   );
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
-      <aside
-        className={clsx(
-          "fixed top-0 left-0 h-full z-30 bg-background hidden lg:block border-r transition-transform duration-300 w-80",
-          !isSidebarOpen && "-translate-x-full",
+    <div className="flex h-[100dvh] flex-col overflow-hidden bg-background">
+      <Header
+        selectedChapter={selectedChapter}
+        selectedSubchapter={selectedSubchapter}
+        sidebarOpen={isSidebarOpen}
+        onToggleSidebar={handleToggleSidebar}
+      />
+
+      <div className="relative flex-1 overflow-hidden">
+        {isSidebarOpen && (
+          <div
+            className="absolute inset-0 z-30 bg-black/50 lg:hidden"
+            onClick={handleToggleSidebar}
+          />
         )}
-      >
-        <div className="pt-20">
+        <aside
+          className={clsx(
+            "absolute inset-y-0 left-0 z-40 w-80 border-r bg-background transition-transform duration-300",
+            !isSidebarOpen && "-translate-x-full",
+          )}
+        >
           <NavigationContent
             chapters={chapters}
             selectedChapter={selectedChapter}
@@ -55,18 +68,7 @@ export function ScriptReader() {
             onToggleChapter={toggleChapter}
             onSetSelectedSubchapter={handleSubchapterSelect}
           />
-        </div>
-      </aside>
-
-      <main
-        className={clsx("flex-1 flex flex-col transition-all duration-300")}
-      >
-        <Header
-          selectedChapter={selectedChapter}
-          selectedSubchapter={selectedSubchapter}
-          sidebarOpen={isSidebarOpen}
-          onToggleSidebar={handleToggleSidebar}
-        />
+        </aside>
 
         <ReaderContent
           selectedSubchapter={selectedSubchapter}
@@ -74,15 +76,15 @@ export function ScriptReader() {
             <DialogueCard key={dialogue.id} dialogue={dialogue} />
           )}
         />
+      </div>
 
-        <NavigationFooter
-          chapters={chapters}
-          selectedChapter={selectedChapter}
-          selectedSubchapter={selectedSubchapter}
-          onNextButtonClick={navigateToNextSubchapter}
-          onPrevButtonClick={navigateToPrevSubchapter}
-        />
-      </main>
+      <NavigationFooter
+        chapters={chapters}
+        selectedChapter={selectedChapter}
+        selectedSubchapter={selectedSubchapter}
+        onNextButtonClick={navigateToNextSubchapter}
+        onPrevButtonClick={navigateToPrevSubchapter}
+      />
     </div>
   );
 }

@@ -35,7 +35,7 @@ export function NavigationFooter({
 
   return (
     <div className="border-t p-4">
-      <div className="max-w-4xl mx-auto w-full pl-16 lg:pl-0 flex justify-between items-center">
+      <div className="max-w-4xl mx-auto w-full lg:pl-0 flex justify-between items-center">
         <Button
           variant="outline"
           onClick={onPrevButtonClick}

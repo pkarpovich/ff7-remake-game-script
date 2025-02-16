@@ -35,12 +35,12 @@ export function ChapterItem({
     <div className="rounded-lg border bg-card">
       <div
         className={clsx(
-          "p-3 font-semibold cursor-pointer hover:bg-accent rounded-t-lg flex justify-between items-center",
+          "flex cursor-pointer items-center justify-between rounded-t-lg p-3 font-semibold hover:bg-accent",
           isSelected && "bg-accent",
         )}
         onClick={() => onChapterToggle(chapter.id)}
       >
-        <span className="text-md leading-none">
+        <span className="text-md whitespace-normal break-words leading-normal px-4">
           Chapter {chapter.number}: {chapter.title}
         </span>
         <Icon className="h-4 w-4" />
@@ -57,10 +57,10 @@ export function ChapterItem({
               <Button
                 key={subchapter.id}
                 variant={variant}
-                className="w-full justify-start h-auto py-2 text-left text-sm"
+                className="w-full justify-start h-auto py-2 text-left"
                 onClick={handleSubchapterClick(chapter, subchapter)}
               >
-                <span className="text-pretty text-md leading-none">
+                <span className="text-md whitespace-normal break-words leading-normal">
                   {subchapter.title}
                 </span>
               </Button>
