@@ -21,9 +21,9 @@ export function NavigationFooter({
   let isNextButtonDisabled = true;
 
   if (selectedChapter && selectedSubchapter) {
-    const isFirstChapter = selectedChapter.number === chapters[0].number;
+    const isFirstChapter = selectedChapter.id === chapters[0].id;
     const isLastChapter =
-      selectedChapter.number === chapters[chapters.length - 1].number;
+      selectedChapter.id === chapters[chapters.length - 1].id;
     const currentSubchapterIndex =
       selectedChapter.subchapters.indexOf(selectedSubchapter);
 

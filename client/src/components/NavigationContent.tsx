@@ -8,8 +8,8 @@ type Props = {
   chapters: Chapter[];
   selectedChapter: Nullable<Chapter>;
   selectedSubchapter: Nullable<Subchapter>;
-  openChapters: Record<number, boolean>;
-  onToggleChapter: (chapterNumber: number) => void;
+  openChapters: Record<string, boolean>;
+  onToggleChapter: (chapterId: string) => void;
   onSetSelectedChapter: (chapter: Nullable<Chapter>) => void;
   onSetSelectedSubchapter: (subchapter: Nullable<Subchapter>) => void;
 };
@@ -35,12 +35,12 @@ export function NavigationContent({
     <ScrollArea className="h-screen">
       <div className="space-y-4 p-4">
         {chapters.map((chapter) => {
-          const isOpen = openChapters[chapter.number];
-          const isSelected = selectedChapter?.number === chapter.number;
+          const isOpen = openChapters[chapter.id];
+          const isSelected = selectedChapter?.id === chapter.id;
 
           return (
             <ChapterItem
-              key={chapter.number}
+              key={chapter.id}
               chapter={chapter}
               isOpen={isOpen}
               isSelected={isSelected}

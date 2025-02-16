@@ -10,7 +10,7 @@ type Props = {
   isOpen: boolean;
   isSelected: boolean;
   selectedSubchapter: Nullable<Subchapter>;
-  onChapterToggle: (chapterNumber: number) => void;
+  onChapterToggle: (chapterId: string) => void;
   onSubchapterSelect: (chapter: Chapter, subchapter: Subchapter) => void;
 };
 
@@ -38,7 +38,7 @@ export function ChapterItem({
           "p-3 font-semibold cursor-pointer hover:bg-accent rounded-t-lg flex justify-between items-center",
           isSelected && "bg-accent",
         )}
-        onClick={() => onChapterToggle(chapter.number)}
+        onClick={() => onChapterToggle(chapter.id)}
       >
         <span className="text-md leading-none">
           Chapter {chapter.number}: {chapter.title}
@@ -55,7 +55,7 @@ export function ChapterItem({
 
             return (
               <Button
-                key={subchapter.title}
+                key={subchapter.id}
                 variant={variant}
                 className="w-full justify-start h-auto py-2 text-left text-sm"
                 onClick={handleSubchapterClick(chapter, subchapter)}

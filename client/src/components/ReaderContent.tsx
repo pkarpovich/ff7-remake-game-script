@@ -5,7 +5,7 @@ import { useFontSize } from "@/providers/fontSize.tsx";
 
 type Props = {
   selectedSubchapter: Nullable<Subchapter>;
-  element: (dialogue: Dialogue, index: number) => JSX.Element;
+  element: (dialogue: Dialogue) => JSX.Element;
 };
 
 export function ReaderContent({ selectedSubchapter, element }: Props) {

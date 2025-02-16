@@ -15,8 +15,8 @@ export function ScriptReader() {
     useState<Nullable<Chapter>>(null);
   const [selectedSubchapter, setSelectedSubchapter] =
     useState<Nullable<Subchapter>>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [openChapters, setOpenChapters] = useState<Record<number, boolean>>({});
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [openChapters, setOpenChapters] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     setChapters(data.chapters);
@@ -30,10 +30,10 @@ export function ScriptReader() {
     }
   }, []);
 
-  const toggleChapter = useCallback((chapterNumber: number) => {
+  const toggleChapter = useCallback((chapterId: string) => {
     setOpenChapters((prev) => ({
       ...prev,
-      [chapterNumber]: !prev[chapterNumber],
+      [chapterId]: !prev[chapterId],
     }));
   }, []);
 
@@ -81,6 +81,10 @@ export function ScriptReader() {
     }
   }, [chapters, getCurrentIndices, selectedChapter, selectedSubchapter]);
 
+  const handleToggleSidebar = useCallback(() => {
+    setIsSidebarOpen((prev) => !prev);
+  }, []);
+
   return (
     <div className="flex h-screen overflow-hidden bg-background">
       <aside
@@ -109,16 +113,16 @@ export function ScriptReader() {
           selectedChapter={selectedChapter}
           selectedSubchapter={selectedSubchapter}
           sidebarOpen={isSidebarOpen}
-          onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
+          onToggleSidebar={handleToggleSidebar}
         />
 
         <ReaderContent
           selectedSubchapter={selectedSubchapter}
-          element={(dialogue, index) => (
-            <Card key={index} className="transition-all hover:shadow-lg">
+          element={(dialogue) => (
+            <Card key={dialogue.id} className="transition-all hover:shadow-lg">
               <CardContent className="p-4">
                 <div className="font-bold text-primary mb-1">
-                  {dialogue.character}
+                  {dialogue.character.name}
                 </div>
                 <div className="text-card-foreground">{dialogue.text}</div>
               </CardContent>
