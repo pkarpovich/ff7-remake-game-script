@@ -35,23 +35,33 @@ export function Header({
   }, [setTheme, theme]);
 
   return (
-    <header className="border-b p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <div className="max-w-4xl mx-auto w-full pl-16 lg:pl-0 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div>
-            {chapterHeader && (
-              <h1 className="text-2xl font-bold leading-none mb-1">
-                {chapterHeader}
-              </h1>
-            )}
-            {subchapterHeader && (
-              <p className="text-muted-foreground text-lg leading-none">
-                {subchapterHeader}
-              </p>
-            )}
-          </div>
+    <header className="sticky top-0 z-50 h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="mx-auto flex h-full max-w-4xl items-center gap-4 px-4">
+        <div className="flex h-full items-center">
+          <img
+            src="/logo.svg"
+            alt="FF7 Remake Script Reader"
+            className="h-8 w-auto"
+            style={{
+              filter: theme === "dark" ? "invert(1)" : "invert(0)",
+            }}
+          />
         </div>
-        <div className="flex items-center gap-2">
+
+        <div className="flex-1 min-w-0">
+          {chapterHeader && (
+            <h1 className="truncate text-lg font-semibold leading-tight">
+              {chapterHeader}
+            </h1>
+          )}
+          {subchapterHeader && (
+            <p className="truncate text-sm text-muted-foreground">
+              {subchapterHeader}
+            </p>
+          )}
+        </div>
+
+        <div className="flex shrink-0 items-center gap-2">
           <FontSizeControls />
           <Button
             variant="ghost"
@@ -64,11 +74,10 @@ export function Header({
           <Button
             variant="ghost"
             size="icon"
-            className="hidden lg:flex"
             onClick={onToggleSidebar}
             aria-label="Toggle sidebar"
           >
-            <Icon className="h-6 w-6" />
+            <Icon className="h-5 w-5" />
           </Button>
         </div>
       </div>
