@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { clsx } from "clsx";
+import { useSwipeable } from "react-swipeable";
 
 import type { Chapter, Subchapter } from "../types";
 import { Header } from "@/components/Header.tsx";
@@ -29,6 +30,16 @@ export function ScriptReader() {
 
   const { isSidebarOpen, openChapters, handleToggleSidebar, toggleChapter } =
     useSidebarState();
+
+  const handlers = useSwipeable({
+    onSwiped: (eventData) => {
+      if (eventData.dir === "Left") {
+        navigateToNextSubchapter();
+      } else if (eventData.dir === "Right") {
+        navigateToPrevSubchapter();
+      }
+    },
+  });
 
   const handleSubchapterSelect = useCallback(
     (chapter: Chapter, subchapter: Subchapter) => {
@@ -70,7 +81,7 @@ export function ScriptReader() {
           />
         </aside>
 
-        <main className="h-full overflow-hidden">
+        <main className="h-full overflow-hidden" {...handlers}>
           <ReaderContent
             selectedSubchapter={selectedSubchapter}
             element={(dialogue) => (
