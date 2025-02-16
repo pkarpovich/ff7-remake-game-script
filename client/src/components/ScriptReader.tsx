@@ -39,7 +39,7 @@ export function ScriptReader() {
   );
 
   return (
-    <div className="flex h-[100dvh] flex-col overflow-hidden bg-background">
+    <div className="flex h-[100dvh] flex-col">
       <Header
         selectedChapter={selectedChapter}
         selectedSubchapter={selectedSubchapter}
@@ -70,12 +70,14 @@ export function ScriptReader() {
           />
         </aside>
 
-        <ReaderContent
-          selectedSubchapter={selectedSubchapter}
-          element={(dialogue) => (
-            <DialogueCard key={dialogue.id} dialogue={dialogue} />
-          )}
-        />
+        <main className="h-full overflow-hidden">
+          <ReaderContent
+            selectedSubchapter={selectedSubchapter}
+            element={(dialogue) => (
+              <DialogueCard key={dialogue.id} dialogue={dialogue} />
+            )}
+          />
+        </main>
       </div>
 
       <NavigationFooter
