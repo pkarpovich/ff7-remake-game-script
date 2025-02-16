@@ -8,6 +8,7 @@ import { Header } from "@/components/Header.tsx";
 import { ReaderContent } from "@/components/ReaderContent.tsx";
 import { NavigationFooter } from "@/components/NavigationFooter.tsx";
 import { NavigationContent } from "@/components/NavigationContent.tsx";
+import DialogueCard from "@/components/DialogueCard.tsx";
 
 export function ScriptReader() {
   const [chapters, setChapters] = useState<Chapter[]>([]);
@@ -119,14 +120,7 @@ export function ScriptReader() {
         <ReaderContent
           selectedSubchapter={selectedSubchapter}
           element={(dialogue) => (
-            <Card key={dialogue.id} className="transition-all hover:shadow-lg">
-              <CardContent className="p-4">
-                <div className="font-bold text-primary mb-1">
-                  {dialogue.character.name}
-                </div>
-                <div className="text-card-foreground">{dialogue.text}</div>
-              </CardContent>
-            </Card>
+            <DialogueCard key={dialogue.id} dialogue={dialogue} />
           )}
         />
 

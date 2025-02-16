@@ -69,6 +69,7 @@ CHARACTER_MAPPING = {
     # Others
     "Seph": CharacterId.SEPHIROTH,
     "S": CharacterId.SEPHIROTH,
+    "Se": CharacterId.SEPHIROTH,
     "С": CharacterId.SEPHIROTH,
     "Зак": CharacterId.ZACK,
     "Be": CharacterId.BETTY,
